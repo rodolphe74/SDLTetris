@@ -1,4 +1,4 @@
-## Colorizer
+## SDLTetris
 
 ### Presentation
 

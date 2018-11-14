@@ -289,6 +289,18 @@ void board::render(/*TTF_Font *font*/) {
                 i++;
             }
             checkLines();
+
+            // Check how many line where deleted and compute score
+            int multiplier = 0;
+            switch (linesDeleted) {
+                case 1 : multiplier = 1; break;
+                case 2 : multiplier = 2; break;
+                case 3 : multiplier = 4; break;
+                case 4 : multiplier = 8; break;
+                default: multiplier = 0;
+            }
+            score += 1000 * multiplier;
+
         }
 
     }
@@ -633,11 +645,11 @@ void board::checkLines() {
         }
         if (cpt == 10) {
             deleteLine(i);
+            linesDeleted ++;
             // checkLines();
             return;
         }
     }
-
 }
 
 int board::checkGameOver() {

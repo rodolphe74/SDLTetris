@@ -50,7 +50,7 @@ private:
     int score = 0;
     char sScore[20];
     std::string scoreString;
-
+    int linesDeleted = 0;
 
     SDL_Rect currentShapeCoordinates;
     SDL_Rect currentBoardMinusFirstLineRect;
@@ -150,6 +150,22 @@ public:
     void setMainTexture(SDL_Texture *texture);
 
     void setWindow(SDL_Window *window);
+
+    void setLinesDeleted(int val) {
+        linesDeleted = val;
+    }
+
+    int getLinesDeleted() {
+        return linesDeleted;
+    }
+
+    void setScore(int val) {
+        score = val;
+    }
+
+    int getScore() {
+        return score;
+    }
 
     void setPlaySounds(int v);
 

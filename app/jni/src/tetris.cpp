@@ -341,8 +341,9 @@ void doMoves() {
 
                 gBoard.playWithShape(x);
 
-                gBoard.checkLines();
+                gBoard.setLinesDeleted(0);
 
+                gBoard.checkLines();
                 gCurrentTimerSpeed = 1000;
 
             }

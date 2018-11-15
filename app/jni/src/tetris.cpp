@@ -73,6 +73,7 @@ SDL_Event gEvent;
 int gCanSlideOrRotate = 0;
 int gCurrentTimerSpeed = 1000;
 int gPlaySounds = 1;
+int gLastAnim = none;
 
 
 button *up, *down, *left, *right;
@@ -320,6 +321,9 @@ void doMoves() {
         gMusicButton->handle_events(queueEvent, gScreenRect, toggleMusic);
         gSoundsButton->handle_events(queueEvent, gScreenRect, toggleSounds);
 
+
+
+
         if (queueEvent.type == gScrollDownEventType) {
             // manage shape scroll with a specific event
             int collision = gBoard.scrollDownCurrentShape();
@@ -346,6 +350,7 @@ void doMoves() {
                 gBoard.checkLines();
                 gCurrentTimerSpeed = 1000;
 
+
             }
         } else {
             // user input event
@@ -370,6 +375,36 @@ void doMoves() {
                 }
             }
         }
+
+
+
+        // Update score after scrollDown events (which means that lines where deleted)
+        if (gLastAnim == scrollLine && gBoard.animate != scrollLine) {
+            // Check how many line where deleted and compute score
+            printf("last anim:%d", gBoard.animate);
+
+            int multiplier = 0;
+            switch (gBoard.getLinesDeleted()) {
+                case 1 :
+                    multiplier = 1;
+                    break;
+                case 2 :
+                    multiplier = 4;
+                    break;
+                case 3 :
+                    multiplier = 16;
+                    break;
+                case 4 :
+                    multiplier = 64;
+                    break;
+                default:
+                    multiplier = 0;
+            }
+            int points = 1000 * multiplier;
+            gBoard.setScore(gBoard.getScore() + points);
+            gBoard.setLinesDeleted(0);
+        }
+        gLastAnim = gBoard.animate;
     }
 }
 

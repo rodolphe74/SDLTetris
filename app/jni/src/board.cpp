@@ -290,17 +290,6 @@ void board::render(/*TTF_Font *font*/) {
             }
             checkLines();
 
-            // Check how many line where deleted and compute score
-            int multiplier = 0;
-            switch (linesDeleted) {
-                case 1 : multiplier = 1; break;
-                case 2 : multiplier = 2; break;
-                case 3 : multiplier = 4; break;
-                case 4 : multiplier = 8; break;
-                default: multiplier = 0;
-            }
-            score += 1000 * multiplier;
-
         }
 
     }
@@ -670,16 +659,4 @@ void board::deleteLine(int row) {
 
     lines++;
 
-    /*
-    Mix_PlayChannel(-1, sounds[6], 0);
-    int i = row + 1;
-    while (i < 22) {
-
-        for (int j = 0; j < 10; j++) {
-            grid[i - 1][j] = grid[i][j];
-        }
-
-        i++;
-    }
-     */
 }

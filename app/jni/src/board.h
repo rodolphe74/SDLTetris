@@ -101,6 +101,7 @@ public:
         std::mt19937 generator(random_dev());
         std::shuffle(vec.begin(), vec.end(), generator);
         int x = vec.at(rand() % 7);
+//        int x = 0;
 
         currentShape = x;
         currentShapeY = /*21*/22;
@@ -121,10 +122,12 @@ public:
         levelTextureLabel = NULL;
 
         // DEBUG
-        for (int j = 0; j < 9; j++) {
-            grid[0][j] = 2;
-            grid[1][j] = 3;
-        }
+//        for (int j = 0; j < 9; j++) {
+//            grid[0][j] = 2;
+//            grid[1][j] = 3;
+//            grid[2][j] = 3;
+//            grid[3][j] = 3;
+//        }
         ////////
 
     }

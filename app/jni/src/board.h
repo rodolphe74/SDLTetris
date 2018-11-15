@@ -101,7 +101,6 @@ public:
         std::mt19937 generator(random_dev());
         std::shuffle(vec.begin(), vec.end(), generator);
         int x = vec.at(rand() % 7);
-//        int x = 0;
 
         currentShape = x;
         currentShapeY = /*21*/22;

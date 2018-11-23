@@ -379,6 +379,7 @@ void board::render(/*TTF_Font *font*/) {
     }
 
     // some debug informations
+    /*
     SDL_Color textColor = { 200, 200, 200, 255 };
     if (getTextureFromText(renderer, debugMessageString, font, textColor, debugMessageTexture, debugMessageRect)) {
         debugMessageRect.x = screenFillRect.w + 30;
@@ -386,6 +387,7 @@ void board::render(/*TTF_Font *font*/) {
         SDL_RenderCopy(renderer, debugMessageTexture, NULL, &debugMessageRect);
         SDL_DestroyTexture(debugMessageTexture);
     }
+     */
 
 }
 

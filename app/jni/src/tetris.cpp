@@ -71,7 +71,8 @@ std::stringstream gTimeText;
 
 SDL_Event gEvent;
 int gCanSlideOrRotate = 0;
-int gCurrentTimerSpeed = 1000;
+int gCurrentTimerSpeed = 700;
+int gLevelTimerSpeed = 700;
 int gPlaySounds = 1;
 int gLastAnim = none;
 
@@ -348,7 +349,7 @@ void doMoves() {
                 gBoard.setLinesDeleted(0);
 
                 gBoard.checkLines();
-                gCurrentTimerSpeed = 1000;
+                gCurrentTimerSpeed = gLevelTimerSpeed;
 
 
             }
@@ -403,6 +404,13 @@ void doMoves() {
             int points = 1000 * multiplier;
             gBoard.setScore(gBoard.getScore() + points);
             gBoard.setLinesDeleted(0);
+
+            // update Level and Speed
+            gBoard.setLevel(gBoard.getLines() / 10);
+            gLevelTimerSpeed = gLevelTimerSpeed - (gBoard.getLevel() * 50);
+            if (gLevelTimerSpeed <= 200) {
+                gLevelTimerSpeed = 200;
+            }
         }
         gLastAnim = gBoard.animate;
     }

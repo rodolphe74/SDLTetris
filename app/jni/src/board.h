@@ -41,7 +41,7 @@ private:
     SDL_Rect levelRect;
     SDL_Rect linesRect;
     SDL_Rect scoreRect;
-    int level = 1234567;
+    int level = 0;
     char sLevel[20];
     std::string levelString;
     int lines = 0;
@@ -167,6 +167,22 @@ public:
 
     int getScore() {
         return score;
+    }
+
+    void setLines(int val) {
+        lines = val;
+    }
+
+    int getLines() {
+        return lines;
+    }
+
+    void setLevel(int val) {
+        level = val;
+    }
+
+    int getLevel() {
+        return level;
     }
 
     void setPlaySounds(int v);
